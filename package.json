@@ -1,0 +1,23 @@
+{
+  "name": "wapicron",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ."
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "node-fetch": "^3.3.1",
+    "node-schedule": "^2.1.1",
+    "pg": "^8.10.0",
+    "pg-pool": "^3.6.0",
+    "pino": "^8.14.1",
+    "random": "^4.1.0",
+    "sleep": "^6.3.0"
+  }
+}
