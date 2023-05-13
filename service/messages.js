@@ -9,7 +9,7 @@ await client.connect();
 
 export const sendMessage = (data) => {
   if (data.options == null) data.options = "";
-  const host = `${process.env.HOSTBAILEYS}/${data.client}/messages/send`;
+  const host = `${process.env.HOSTWAPI}/${data.client}/messages/send`;
   return post(host, data);
 };
 

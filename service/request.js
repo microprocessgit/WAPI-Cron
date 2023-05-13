@@ -11,6 +11,6 @@ export async function post(url, data) {
   return await res.text();
   } catch (e) {
     console.log(e);
-    return { message: e, statusCode: 500 };
+    return JSON.stringify({ message: e, statusCode: 500 });
   }
 }
