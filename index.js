@@ -1,6 +1,6 @@
 import sleep from 'sleep';
 import random from 'random';
-import { getMessages, sendMessage, removeFromFila } from './service/messages.js';
+import { getMessages, sendMessage, removeFromFila, addMyId } from './service/messages.js';
 
 let message = [];
 let messages = [];
@@ -13,12 +13,14 @@ function main() {
     messages.reverse();
     message = messages.pop();
     sendMessage(message).then(res => {
-      if (JSON.parse(res).statusCode == 200) {
+      res = JSON.parse(res);
+      if (res.statusCode == 200) {
         removeFromFila(message.pkId);
+        addMyId(message.myId, res.data, message.client);
       }
       main();
+      sleep.sleep(random.int(1,3));
     });
-    sleep.sleep(random.int(1,3));
   } else {
     getMessages().then(res => {
       messages = res;
