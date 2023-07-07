@@ -34,12 +34,13 @@ export const getMessages = async () => {
   }
 }
 
-export const addMyId = async (myId, data, sessionId) => {
+export const addMyId = async (myId, data, sessionId, isAction) => {
   const {remoteJid, id} = data.key;
   try {
-   await client.query('INSERT INTO "Message"("sessionId", "remoteJid", id, key, "myId")'+ 
-    'VALUES ($1, $2, $3, $4, $5) ON CONFLICT ("sessionId", "remoteJid", id) DO UPDATE SET "myId" = $5;',
-   [sessionId, remoteJid, id, data.key, myId]);
+   await client.query('INSERT INTO "Message"("sessionId", "remoteJid", id, key, "myId", "isAction")'+ 
+    'VALUES ($1, $2, $3, $4, $5, $6) ON CONFLICT ("sessionId", "remoteJid", id) DO UPDATE SET "myId" = $5,'+
+    '"isAction" = $6',
+   [sessionId, remoteJid, id, data.key, myId, isAction]);
   }
   catch (e) {
     logger.error(e, 'An error occured during message get');

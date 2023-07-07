@@ -16,7 +16,7 @@ function main() {
       res = JSON.parse(res);
       if (res.statusCode == 200) {
         removeFromFila(message.pkId);
-        addMyId(message.myId, res.data, message.client);
+        addMyId(message.myId, res.data, message.client, message.isAction);
       }
       main();
       sleep.sleep(random.int(1,3));
